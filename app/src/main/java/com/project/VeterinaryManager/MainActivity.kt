@@ -39,16 +39,17 @@ class MainActivity : AppCompatActivity() {
 
     }
     private fun message(view: View, message: String) {
-        val snackbar = Snackbar.make(view,message,Snackbar.LENGTH_SHORT)
-        snackbar.setBackgroundTint(Color.parseColor("#FF000"))
+        val snackbar = Snackbar.make(view, message, Snackbar.LENGTH_SHORT)
+        snackbar.view.setBackgroundColor(Color.parseColor("#FF0000"))
         snackbar.setTextColor(Color.parseColor("#FFFFFF"))
         snackbar.show()
     }
-
     private fun goToHome(name: String) {
         val intent = Intent(this, home::class.java)
-        intent.putExtra("nome",name)
+        intent.putExtra("name",name)
         startActivity(intent)
     }
 
 }
+
+
