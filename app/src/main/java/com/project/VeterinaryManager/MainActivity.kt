@@ -29,10 +29,10 @@ class MainActivity : AppCompatActivity() {
                     message(it,"Coloque o seu nome!")
                 } password.isEmpty() -> {
                     message(it,"Preencha a senha!")
-                } password.length<=5 -> {
+                } password.length <= 5 -> {
                     message(it,"A senha precisa ter no mínimo 6 caracteres!")
                 } else -> {
-
+                    goToHome(name)
                 }
             }
         }
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         snackbar.show()
     }
 
-    private fun navegarToHome(name: String) {
+    private fun goToHome(name: String) {
         val intent = Intent(this, home::class.java)
         intent.putExtra("nome",name)
         startActivity(intent)
