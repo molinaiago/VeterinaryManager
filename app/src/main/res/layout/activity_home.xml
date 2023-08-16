@@ -56,13 +56,34 @@
         app:layout_constraintTop_toBottomOf="@id/allServices"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="@android:color/transparent"
         />
 
     <Button
         android:id="@+id/scheduleButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="AGENDAR CASTRAÇÃO"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/denim"
+        android:padding="15dp"
+        android:drawableEnd="@drawable/baseline_arrow_right_alt_30"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewServices"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <Button
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="INFORMAÇÕES"
         android:textSize="18sp"
         android:textStyle="bold"
         android:backgroundTint="@color/denim"
@@ -72,10 +93,11 @@
         android:layout_marginStart="100dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="20dp"
-        app:layout_constraintTop_toBottomOf="@id/recyclerViewServices"
+        app:layout_constraintTop_toBottomOf="@id/scheduleButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
 
         />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,8 +25,8 @@ class home : AppCompatActivity() {
         val name = intent.extras?.getString("name")
 
         binding.userName.text = "Bem-vindo, $name"
-        val recyclerViewServices = binding.recyclerViewServices
-        recyclerViewServices.layoutManager = GridLayoutManager(this,1)
+        val recyclerViewServices = findViewById<RecyclerView>(R.id.recyclerViewServices)
+        recyclerViewServices.layoutManager = GridLayoutManager(this,2)
         servicesAdapter = ServicesAdapter(this,listServices)
         recyclerViewServices.setHasFixedSize(true)
         recyclerViewServices.adapter = servicesAdapter
