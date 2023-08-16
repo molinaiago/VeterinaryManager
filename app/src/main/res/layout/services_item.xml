@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/imgServices"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="130dp"
             android:src="@drawable/ic_launcher_background"
             android:scaleType="centerCrop"
             android:layout_gravity="center"
