@@ -31,7 +31,8 @@
             app:layout_constraintTop_toBottomOf="@id/userName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints"
+        />
 
         <TextView
             android:id="@+id/allServices"
@@ -68,7 +69,7 @@
         android:textStyle="bold"
         android:backgroundTint="@color/denim"
         android:padding="15dp"
-        android:drawableEnd="@drawable/baseline_arrow_right_alt_30"
+        android:drawableEnd="@drawable/baseline_check_24"
         android:layout_marginTop="80dp"
         android:layout_marginStart="100dp"
         android:layout_marginEnd="100dp"
@@ -84,11 +85,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="INFORMAÇÕES"
-        android:textSize="18sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:backgroundTint="@color/denim"
         android:padding="15dp"
-        android:drawableEnd="@drawable/baseline_arrow_right_alt_24"
+        android:drawableEnd="@drawable/baseline_info_24"
         android:layout_marginTop="20dp"
         android:layout_marginStart="100dp"
         android:layout_marginEnd="100dp"
