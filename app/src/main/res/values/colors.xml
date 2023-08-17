@@ -3,8 +3,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="midnightblue">#2C3E50</color>
-    <color name="green">#008000</color>
-    <color name="alizarin">#E74C3C</color>
     <color name="cerulean">#00ABF0</color>
     <color name="denim">#0072A0</color>
+    <color name="DodgerBlue">#1E90FF</color>
+    <color name="DeepSkyBlue">#00BFFF</color>
+    <color name="LightSkyBlue">#87CEFA</color>
+    <color name="green">#008000</color>
+    <color name="alizarin">#E74C3C</color>
+    <color name="red">#FF0000</color>
 </resources>

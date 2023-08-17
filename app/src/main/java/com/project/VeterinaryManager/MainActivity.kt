@@ -4,6 +4,8 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.project.VeterinaryManager.databinding.ActivityMainBinding
@@ -19,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
+
+        window.statusBarColor = Color.parseColor("#FFFFFF")
 
         binding.loginButton.setOnClickListener {
             val name = binding.editName.text.toString()
@@ -50,6 +54,16 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    private fun login(view: View) {
+        val progressBar = binding.progressBar
+        progressBar.visibility = View.VISIBLE
+        binding.loginButton.isEnabled = false
+        binding.loginButton.setTextColor(Color.parseColor("#FFFFFF"))
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            message(view, "Login efetuado com sucesso!")
+        },3000)
+    }
 }
 
 
