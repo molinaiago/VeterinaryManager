@@ -2,6 +2,12 @@
     <string name="app_name">VeterinaryManager</string>
     <string name="hint_email">E-mail</string>
     <string name="hint_password">Senha</string>
+    <string name="locationStreet">Endereço: Rua</string>
+    <string name="locationBairro">Endereço: Bairro</string>
+    <string name="locationNumber">Endereço: Número</string>
+    <string name="name">Nome Completo</string>
+    <string name="cpf">CPF</string>
     <string name="txtButtonLogin">Entrar</string>
+    <string name="txtRegister">Cadastrar-se</string>
     <string name="txtScreenRegister">Não tem conta? CADASTRE-SE!</string>
 </resources>

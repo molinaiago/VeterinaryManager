@@ -13,6 +13,9 @@
         android:theme="@style/Theme.VeterinaryManager"
         tools:targetApi="31">
         <activity
+            android:name=".view.RegisterUser"
+            android:exported="false" />
+        <activity
             android:name=".view.Scheduling"
             android:exported="false" />
         <activity

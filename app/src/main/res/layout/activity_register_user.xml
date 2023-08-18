@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.RegisterUser"
+    android:background="@color/denim"
+    >
+
+    <View
+        android:id="@+id/containerTop"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/background_view_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="-220dp"
+        android:src="@drawable/logoappinside"
+        android:layout_marginStart="80dp"
+        />
+
+    ///
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_gravity="center"
+        android:id="@+id/editRegisterName"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="-20dp"
+        android:hint="@string/name"
+        android:inputType="textPersonName"
+        android:maxLines="1"
+        android:textSize="19sp"
+        android:padding="12dp"
+        android:drawableRight="@drawable/baseline_person_24"
+        android:background="@drawable/background_edittext"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/black"
+        />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editEmailRegister"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:hint="@string/hint_email"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:textSize="19sp"
+        android:padding="12dp"
+        android:drawableRight="@drawable/baseline_email_24"
+        android:background="@drawable/background_edittext"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/black"
+        />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editPasswordRegister"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:hint="@string/hint_password"
+        android:inputType="numberPassword"
+        android:maxLines="1"
+        android:textSize="19sp"
+        android:padding="12dp"
+        android:background="@drawable/background_edittext"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/black"
+        app:passwordToggleEnabled="true"
+        android:drawableRight="@drawable/baseline_key_24"
+        />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editCPF"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:hint="@string/cpf"
+        android:inputType="number"
+        android:maxLines="1"
+        android:textSize="19sp"
+        android:padding="12dp"
+        android:background="@drawable/background_edittext"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/black"
+        android:drawableRight="@drawable/baseline_lock_person_24"
+        />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editLocationStreet"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:hint="@string/locationStreet"
+        android:inputType="textLongMessage"
+        android:maxLines="1"
+        android:textSize="19sp"
+        android:padding="12dp"
+        android:background="@drawable/background_edittext"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/black"
+        android:drawableRight="@drawable/baseline_person_pin_circle_24"
+        />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editLocationNumber"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:hint="@string/locationNumber"
+        android:inputType="number"
+        android:maxLines="1"
+        android:textSize="19sp"
+        android:padding="12dp"
+        android:background="@drawable/background_edittext"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/black"
+        android:drawableRight="@drawable/baseline_123_24"
+        />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editLocationBairro"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:hint="@string/locationBairro"
+        android:inputType="textLongMessage"
+        android:maxLines="1"
+        android:textSize="19sp"
+        android:padding="12dp"
+        android:background="@drawable/background_edittext"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/black"
+        android:drawableRight="@drawable/baseline_person_pin_circle_24"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtRegister"
+        android:textSize="18sp"
+        android:padding="15dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
+        android:background="@drawable/background_button_selector"
+        android:enabled="true"
+        />
+
+    ///
+
+    <View
+        android:id="@+id/containerBottom"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginStart="-5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_view_bottom" />
+
+    <ImageView
+        android:layout_gravity="center"
+        android:id="@+id/logoUri"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/logouri"
+        android:layout_marginTop="-190dp"
+        />
+
+</LinearLayout>
+</ScrollView>

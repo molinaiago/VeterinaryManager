@@ -9,6 +9,7 @@ import android.os.Looper
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.project.VeterinaryManager.databinding.ActivityMainBinding
+import com.project.VeterinaryManager.view.RegisterUser
 import com.project.VeterinaryManager.view.home
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         window.statusBarColor = Color.parseColor("#FFFFFF")
 
+        // Levar para tela home
         binding.loginButton.setOnClickListener {
             val name = binding.editName.text.toString()
             val password = binding.editPassword.text.toString()
@@ -39,6 +41,12 @@ class MainActivity : AppCompatActivity() {
                     goToHome(name)
                 }
             }
+        }
+
+        // Levar para tela de registro
+        binding.txtScreenRegister.setOnClickListener {
+            val intent = Intent(this, RegisterUser::class.java)
+            startActivity(intent)
         }
 
     }
