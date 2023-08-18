@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "846782615358",
-    "project_id": "castravet-5a0b5",
-    "storage_bucket": "castravet-5a0b5.appspot.com"
+    "project_number": "520515079107",
+    "project_id": "castravet-ce5e9",
+    "storage_bucket": "castravet-ce5e9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:846782615358:android:189dec481b42f3d664266f",
+        "mobilesdk_app_id": "1:520515079107:android:cc863f47306bd51cc80b76",
         "android_client_info": {
           "package_name": "com.project.VeterinaryManager"
         }
       },
       "oauth_client": [
         {
-          "client_id": "846782615358-oe03ojiofmum0f6qioasm5gt81cs4k0v.apps.googleusercontent.com",
+          "client_id": "520515079107-9k4h3i92k10dr56cq1md29j8a4eo6s2d.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAFXzy76yTcbmvDRBuWz2HuNAU_IEd15e4"
+          "current_key": "AIzaSyBcAZDYi_GtOHEAi5c8RcnwccGSrtcsd_8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "846782615358-oe03ojiofmum0f6qioasm5gt81cs4k0v.apps.googleusercontent.com",
+              "client_id": "520515079107-9k4h3i92k10dr56cq1md29j8a4eo6s2d.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

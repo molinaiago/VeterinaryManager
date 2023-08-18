@@ -1,12 +1,16 @@
 package com.project.VeterinaryManager.view
 
+import android.R
 import android.graphics.Color
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Button
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.project.VeterinaryManager.databinding.ActivitySchedulingBinding
 import java.util.Calendar
@@ -103,19 +107,31 @@ class Scheduling : AppCompatActivity() {
     }
 
     private fun saveSchedule(view: View, cliente: String, option: String, data: String, hora: String) {
+        // Aqui a val name pega o nome do usuário digitado na tela de login, alterar para um possível email!
+        val name = intent.getStringExtra("name") ?: ""
+        //
         val db = FirebaseFirestore.getInstance()
-
         val userData = hashMapOf(
-            "cliente" to cliente,
+            "cliente" to name,
             "option" to option,
             "data" to data,
             "hora" to hora
         )
 
-        db.collection("agendamentos").document(cliente).set(userData).addOnCompleteListener {
-            message(view, "Agendamento realizado com sucesso!", "#008000")
-        }.addOnFailureListener {
-            message(view,"Erro no servidor.","#FF0000")
+        // userID = para fins de autenticação no firebase!
+        val userID = "Iago"
+
+        if (userID != null) {
+            db.collection("agendamentos").document(userID).set(userData)
+                .addOnSuccessListener {
+                    message(view, "Agendamento realizado com sucesso!", "#008000")
+                }
+                .addOnFailureListener {
+                    message(view, "Erro no servidor.", "#FF0000")
+                }
+        } else {
+            // Não foi possível obter o ID do usuário autenticado
+            message(view, "Erro na autenticação.", "#FF0000")
         }
     }
 }
