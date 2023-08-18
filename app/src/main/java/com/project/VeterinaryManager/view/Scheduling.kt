@@ -87,6 +87,9 @@ class Scheduling : AppCompatActivity() {
                 data.isEmpty() -> {
                     message(it,"Preencha a data!","#FF0000")
                 }
+                optDog.isChecked && optCat.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
+                    saveSchedule(it,name,"Cachorro/Gato",data,hora)
+                }
                 optDog.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
                     saveSchedule(it,name,"Cachorro",data,hora)
                 }
