@@ -1,16 +1,12 @@
 package com.project.VeterinaryManager.view
 
-import android.R
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.project.VeterinaryManager.databinding.ActivitySchedulingBinding
 import java.util.Calendar
@@ -31,7 +27,6 @@ class Scheduling : AppCompatActivity() {
         supportActionBar?.hide()
 
         val name = intent.extras?.getString("nome").toString()
-
         val datePicker = binding.datePicker
 
         datePicker.setOnDateChangedListener { _, year, monthOfyear, dayOfMonth ->
