@@ -8,15 +8,11 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.project.VeterinaryManager.R
-import com.project.VeterinaryManager.adapter.ServicesAdapter
 import com.project.VeterinaryManager.databinding.ActivityHomeBinding
-import com.project.VeterinaryManager.model.Services
 
 class home : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var servicesAdapter: ServicesAdapter
-    private val listServices: MutableList<Services> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

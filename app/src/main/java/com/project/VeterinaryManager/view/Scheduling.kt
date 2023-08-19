@@ -1,5 +1,7 @@
 package com.project.VeterinaryManager.view
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -9,7 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import com.project.VeterinaryManager.databinding.ActivitySchedulingBinding
+import java.time.LocalTime
 import java.util.Calendar
+
 
 class Scheduling : AppCompatActivity() {
 
@@ -27,84 +31,98 @@ class Scheduling : AppCompatActivity() {
         supportActionBar?.hide()
 
         val name = intent.extras?.getString("nome").toString()
-        val datePicker = binding.datePicker
 
-        datePicker.setOnDateChangedListener { _, year, monthOfyear, dayOfMonth ->
-            calendar.set(Calendar.YEAR,year)
-            calendar.set(Calendar.MONTH,monthOfyear)
-            calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
-
-            var day = dayOfMonth.toString()
-            val month: String
-
-            if (dayOfMonth < 10) {
-                day = "0$dayOfMonth"
-            }
-            if (monthOfyear < 10) {
-                month = "" + (monthOfyear+1)
-            } else {
-                month = (monthOfyear+1).toString()
-            }
-
-            data = "$day / $month / $year"
+        binding.datePickerButton.setOnClickListener {
+            showDatePickerDialog()
         }
 
-        binding.timePicker.setOnTimeChangedListener {_,hourOfDay, minute ->
-
-            val minuto: String
-
-            if (minute < 10) {
-                minuto = "0$minute"
-            } else {
-                minuto = minute.toString()
-            }
-
-            hora = "$hourOfDay:$minuto"
-
+        binding.timePickerButton.setOnClickListener {
+            showTimePickerDialog()
         }
-
-        binding.timePicker.setIs24HourView(true)
 
         binding.schedulingButton.setOnClickListener {
 
             val optDog = binding.optDog
             val optCat = binding.optCat
-            //   verde> #008000
-            //vermelho> #FF0000
 
             when {
                 hora.isEmpty() -> {
-                    message(it,"Preencha o horário!","#FF0000")
+                    message(it, "Preencha o horário!", "#FF0000")
                 }
-                hora < "8:00" && hora > "18:00" -> {
-                    message(it,"Horário de atendimento: 08:00 às 18:00!","#FF0000")
+
+                LocalTime.parse(hora) < LocalTime.parse("08:00") ||
+                        LocalTime.parse(hora) > LocalTime.parse("18:00") -> {
+                    message(it, "Horário de atendimento: 08:00 às 18:00!", "#FF0000")
                 }
+
                 data.isEmpty() -> {
-                    message(it,"Preencha a data!","#FF0000")
+                    message(it, "Preencha a data!", "#FF0000")
                 }
+
                 optDog.isChecked && optCat.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
-                    saveSchedule(it,name,"Cachorro/Gato",data,hora)
+                    saveSchedule(it, name, "Cachorro/Gato", data, hora)
                 }
+
                 optDog.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
-                    saveSchedule(it,name,"Cachorro",data,hora)
+                    saveSchedule(it, name, "Cachorro", data, hora)
                 }
+
                 optCat.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
-                    saveSchedule(it,name,"Gato",data,hora)
+                    saveSchedule(it, name, "Gato", data, hora)
                 }
+
                 else -> {
-                    message(it,"Escolha algum animal!","#FF0000")
+                    message(it, "Escolha algum animal!", "#FF0000")
                 }
             }
         }
     }
+
+    private fun showDatePickerDialog() {
+        val datePicker = DatePickerDialog(
+            this,
+            { _, year, monthOfYear, dayOfMonth ->
+                val month = monthOfYear + 1
+                data = "$dayOfMonth / $month / $year"
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+        datePicker.show()
+    }
+
+    private fun showTimePickerDialog() {
+        val timePicker = TimePickerDialog(
+            this,
+            { _, hourOfDay, minute ->
+                val formattedHour = if (hourOfDay < 10) "0$hourOfDay" else hourOfDay.toString()
+                val formattedMinute = if (minute < 10) "0$minute" else minute.toString()
+                hora = "$formattedHour:$formattedMinute"
+            },
+            calendar.get(Calendar.HOUR_OF_DAY),
+            calendar.get(Calendar.MINUTE),
+            true
+        )
+        timePicker.show()
+    }
+
+
+
     private fun message(view: View, message: String, cor: String) {
-        val snackbar = Snackbar.make(view,message, Snackbar.LENGTH_SHORT)
+        val snackbar = Snackbar.make(view, message, Snackbar.LENGTH_SHORT)
         snackbar.setBackgroundTint(Color.parseColor(cor))
         snackbar.setTextColor(Color.parseColor("#FFFFFF"))
         snackbar.show()
     }
 
-    private fun saveSchedule(view: View, cliente: String, option: String, data: String, hora: String) {
+    private fun saveSchedule(
+        view: View,
+        cliente: String,
+        option: String,
+        data: String,
+        hora: String
+    ) {
         // Aqui a val name pega o nome do usuário digitado na tela de login, alterar para um possível email!
         val name = intent.getStringExtra("name") ?: ""
         //
@@ -133,3 +151,4 @@ class Scheduling : AppCompatActivity() {
         }
     }
 }
+

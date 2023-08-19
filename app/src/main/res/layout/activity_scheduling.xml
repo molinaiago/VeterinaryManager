@@ -2,97 +2,92 @@
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-
-    >
-
-
-<LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    >
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/midnightblue"
+    android:background="@color/denim"
     tools:context=".view.Scheduling">
+
+    <View
+        android:id="@+id/containerTop"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/background_view_top"
+        android:layout_marginTop="-10dp"
+        />
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/logoappinside"
+        android:layout_gravity="center"
+        android:layout_marginTop="-220dp"
+        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Agendamento"
+        android:background="@color/midnightblue"
         android:textSize="25sp"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_margin="20dp"
+        android:layout_marginTop="-3dp"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Escolha uma das datas disponíveis"
+        android:text="Escolha uma das datas disponíveis:"
         android:textSize="23sp"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         />
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        app:cardBackgroundColor="@color/black"
-        >
-
-        <TextView
-            android:id="@+id/txtschedulingData"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Data"
-            android:textSize="18sp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_margin="10dp"
-            />
-    </androidx.cardview.widget.CardView>
-
-    <DatePicker
-        android:id="@+id/datePicker"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:calendarViewShown="false"
-        android:datePickerMode="spinner" />
+        android:orientation="horizontal"
+        android:layout_gravity="center">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        app:cardBackgroundColor="@color/black"
-        >
-
-        <TextView
-            android:id="@+id/txtschedulingHour"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/datePickerButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hora"
-            android:textSize="18sp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_margin="10dp"
+            android:backgroundTint="@color/midnightblue"
+            android:text="DEFINIR DATA"
+            android:textColor="@android:color/white"
+            android:padding="15dp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
             />
-    </androidx.cardview.widget.CardView>
 
-    <TimePicker
-        android:id="@+id/timePicker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:timePickerMode="spinner"
-        />
+        <Button
+            android:id="@+id/timePickerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/midnightblue"
+            android:text="DEFINIR HORA"
+            android:textColor="@android:color/white"
+            android:padding="15dp"
+            android:layout_weight="1"
+            android:layout_marginStart="5dp"
+            />
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="match_parent"
@@ -108,7 +103,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="-15dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp">
 
@@ -117,55 +112,99 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            />
+           />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="2"
             android:text="Cachorro"
             android:textSize="18sp"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp">
+            android:textStyle="bold" />
 
         <CheckBox
             android:id="@+id/optCat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            />
+            android:layout_weight="1" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Gato"
             android:textSize="18sp"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="LEMBRETES:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- Lembre-se, ao agendar, você concorda com os termos das taxas dos exames, o pagamento é na Instituição;"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- O uso de uma caixa de transporte é importante;"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:padding="5dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- Verifique novamente a data e hora escolhida;"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:padding="5dp"
+        />
 
     <Button
         android:id="@+id/schedulingButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Confirmar Agendamento"
+        android:layout_gravity="center"
+        android:paddingBottom="30dp"
+        android:paddingEnd="30dp"
+        android:paddingStart="30dp"
+        android:paddingTop="30dp"
+        android:text="AGENDAR"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:textStyle="bold"
         android:padding="15dp"
         app:cornerRadius="15dp"
         android:backgroundTint="@color/green"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginStart="100dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="20dp"
