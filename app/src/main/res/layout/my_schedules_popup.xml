@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/denim"
+    >
+
+    <TextView
+        android:textColor="@color/white"
+        android:id="@+id/agendasTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Suas agendas:"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Aqui você pode adicionar outros elementos para exibir as agendas do usuário -->
+
+    <Button
+        android:id="@+id/closeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Fechar"
+        android:background="@color/midnightblue"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp" />
+</LinearLayout>
