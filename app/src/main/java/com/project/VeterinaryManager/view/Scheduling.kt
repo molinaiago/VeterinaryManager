@@ -2,9 +2,11 @@ package com.project.VeterinaryManager.view
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -60,15 +62,19 @@ class Scheduling : AppCompatActivity() {
                 }
 
                 optDog.isChecked && optCat.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
+
                     saveSchedule(it, name, "Cachorro/Gato", data, hora)
+                    navigateToHomeActivity()
                 }
 
                 optDog.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
                     saveSchedule(it, name, "Cachorro", data, hora)
+                    navigateToHomeActivity()
                 }
 
                 optCat.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
                     saveSchedule(it, name, "Gato", data, hora)
+                    navigateToHomeActivity()
                 }
 
                 else -> {
@@ -107,6 +113,15 @@ class Scheduling : AppCompatActivity() {
         timePicker.show()
     }
 
+    //Função para levar para a homePage
+    private fun navigateToHomeActivity() {
+        val handler = Handler()
+        handler.postDelayed({
+            val intent = Intent(this, home::class.java)
+            startActivity(intent)
+        }, 3000)
+    }
+
 
 
     private fun message(view: View, message: String, cor: String) {
@@ -141,6 +156,9 @@ class Scheduling : AppCompatActivity() {
             db.collection("agendamentos").document(userID).set(userData)
                 .addOnSuccessListener {
                     message(view, "Agendamento realizado com sucesso!", "#008000")
+                    Handler().postDelayed({
+                        navigateToHomeActivity()
+                    }, 4000) // Delay de 2 segundos
                 }
                 .addOnFailureListener {
                     message(view, "Erro no servidor.", "#FF0000")
@@ -151,4 +169,3 @@ class Scheduling : AppCompatActivity() {
         }
     }
 }
-
