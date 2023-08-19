@@ -16,8 +16,6 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <!-- Aqui você pode adicionar outros elementos para exibir as agendas do usuário -->
-
     <Button
         android:id="@+id/closeButton"
         android:layout_width="wrap_content"
