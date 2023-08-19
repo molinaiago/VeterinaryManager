@@ -61,7 +61,7 @@ class register_user : AppCompatActivity() {
         //Email
         val emailEditText = findViewById<TextInputEditText>(R.id.editEmailRegister)
         val email = emailEditText.text.toString()
-           if (email.isEmpty()) {
+            if (email.isEmpty()) {
                 message(emailEditText, "Digite o seu e-mail!", "#FF0000")
                 return false // Retorna false para indicar que a validação falhou
             }
@@ -171,7 +171,6 @@ class register_user : AppCompatActivity() {
         if (uID != null) {
             db.collection("users").document(uID).set(userData)
                 .addOnSuccessListener {
-                    message(view, "Cadastro realizado com sucesso!", "#008000")
                 }
                 .addOnFailureListener {
                     message(view, "Erro no servidor.", "#FF0000")

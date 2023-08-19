@@ -1,10 +1,12 @@
 package com.project.VeterinaryManager.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.project.VeterinaryManager.R
 import com.project.VeterinaryManager.adapter.ServicesAdapter
 import com.project.VeterinaryManager.databinding.ActivityHomeBinding
@@ -24,14 +26,6 @@ class home : AppCompatActivity() {
         supportActionBar?.hide()
         val name = intent.extras?.getString("name")
 
-        binding.userName.text = "Bem-vindo, $name"
-        val recyclerViewServices = findViewById<RecyclerView>(R.id.recyclerViewServices)
-        recyclerViewServices.layoutManager = GridLayoutManager(this,2)
-        servicesAdapter = ServicesAdapter(this,listServices)
-        recyclerViewServices.setHasFixedSize(true)
-        recyclerViewServices.adapter = servicesAdapter
-        getServices()
-
         binding.scheduleButton.setOnClickListener {
             val intent = Intent(this, Scheduling::class.java)
             intent.putExtra("name",name)
@@ -39,13 +33,21 @@ class home : AppCompatActivity() {
         }
     }
 
-    private fun getServices() {
-        val service1 = Services(R.drawable.dog,"Cachorro")
-        listServices.add(service1)
+    fun openDialog(view: View) {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_layout, null)
+        val dialogBuilder = AlertDialog.Builder(this)
+            .setView(dialogView)
+        val alertDialog = dialogBuilder.create()
+        val dialogText = dialogView.findViewById<TextView>(R.id.dialogText)
+        val dialogButton = dialogView.findViewById<Button>(R.id.dialogButton)
 
-        val service2 = Services(R.drawable.cat,"Gato")
-        listServices.add(service2)
+        dialogText.text = "INFORMAÇÕES IMPORTANTES:"
 
-
+        dialogButton.setOnClickListener {
+            alertDialog.dismiss()
+        }
+        alertDialog.show()
     }
+
+
 }
