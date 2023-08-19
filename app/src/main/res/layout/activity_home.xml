@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
 <LinearLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/denim"
@@ -21,16 +21,15 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@drawable/background_view_top"
-        android:layout_marginTop="-50dp"
+        android:layout_marginTop="-40dp"
         />
 
     <ImageView
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:src="@drawable/logoappinside"
         android:layout_gravity="center"
         android:layout_marginTop="-220dp"
-        />
+        android:src="@drawable/logoappinside" />
 
     <TextView
         android:id="@+id/userName"
@@ -41,7 +40,7 @@
         android:textStyle="bold"
         android:textColor="@color/white"
         android:gravity="center"
-        android:layout_marginTop="-25dp"
+        android:layout_marginTop="-15dp"
         />
 
     <TextView
@@ -135,34 +134,55 @@
 
     <Button
         android:id="@+id/info"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="INFORMAÇÕES"
         android:textSize="17sp"
         android:textStyle="bold"
         android:backgroundTint="@color/midnightblue"
         android:padding="15dp"
+        android:textColor="@color/white"
         android:drawableEnd="@drawable/baseline_info_24"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="16dp"
         android:layout_gravity="center"
         android:onClick="openDialog"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <Button
+        android:id="@+id/mySchedulings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MINHA AGENDA"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/midnightblue"
+        android:padding="15dp"
+        android:drawableEnd="@drawable/baseline_view_agenda_24"
+        android:layout_marginTop="-20dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         />
 
     <Button
         android:id="@+id/scheduleButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="AGENDAR CASTRAÇÃO"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         android:backgroundTint="@color/midnightblue"
         android:padding="15dp"
         android:drawableEnd="@drawable/baseline_check_24"
-        android:layout_marginTop="-15dp"
+        android:layout_marginTop="-5dp"
         android:layout_gravity="center"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         />
 
 </LinearLayout>
