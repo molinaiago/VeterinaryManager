@@ -73,6 +73,3 @@ Sure, I'll separate the conversation information and requirements for building t
 
 14. **Help Resources:**
      - Include FAQ and support section to help users.
-
-Keep in mind that these topics cover requirements and important information for building the app based on the conversation provided. Be sure to adapt these requirements to the specific needs of the project and users.
-
