@@ -23,6 +23,10 @@ class Scheduling : AppCompatActivity() {
     private val calendar: Calendar = Calendar.getInstance()
     private var data: String = ""
     private var hora: String = ""
+    private lateinit var selectedAnimal: String
+    private lateinit var selectedSex: String
+    private lateinit var selectedSize: String
+    private var animalAge: Double = 0.0
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +36,8 @@ class Scheduling : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        val name = intent.extras?.getString("nome").toString()
+        val cliente = intent.extras?.getString("cliente").toString()
+
 
         binding.datePickerButton.setOnClickListener {
             showDatePickerDialog()
@@ -43,9 +48,14 @@ class Scheduling : AppCompatActivity() {
         }
 
         binding.schedulingButton.setOnClickListener {
-
             val optDog = binding.optDog
             val optCat = binding.optCat
+            val optMale = binding.optMale
+            val optFemale = binding.optFemale
+            val optSmall = binding.optSmall
+            val optMedium = binding.optMedium
+            val optBig = binding.optBig
+            val ageEditText = binding.animalAge
 
             when {
                 hora.isEmpty() -> {
@@ -61,27 +71,39 @@ class Scheduling : AppCompatActivity() {
                     message(it, "Preencha a data!", "#FF0000")
                 }
 
-                optDog.isChecked && optCat.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
-
-                    saveSchedule(it, name, "Cachorro/Gato", data, hora)
-                    navigateToHomeActivity()
+                !optDog.isChecked && !optCat.isChecked -> {
+                    message(it, "Escolha um animal (Cachorro ou Gato)!", "#FF0000")
                 }
 
-                optDog.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
-                    saveSchedule(it, name, "Cachorro", data, hora)
-                    navigateToHomeActivity()
+                !optMale.isChecked && !optFemale.isChecked -> {
+                    message(it, "Escolha um sexo (Macho ou Fêmea)!", "#FF0000")
                 }
 
-                optCat.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
-                    saveSchedule(it, name, "Gato", data, hora)
-                    navigateToHomeActivity()
+                !optSmall.isChecked && !optMedium.isChecked && !optBig.isChecked -> {
+                    message(it, "Escolha um tamanho (Pequeno, Médio ou Grande)!", "#FF0000")
+                }
+
+                ageEditText.text.toString().isEmpty() -> {
+                    message(it, "Informe a idade do animal!", "#FF0000")
                 }
 
                 else -> {
-                    message(it, "Escolha algum animal!", "#FF0000")
+                    selectedAnimal = if (optDog.isChecked) "Cachorro" else "Gato"
+                    selectedSex = if (optMale.isChecked) "Macho" else "Fêmea"
+                    selectedSize = when {
+                        optSmall.isChecked -> "Pequeno"
+                        optMedium.isChecked -> "Médio"
+                        else -> "Grande"
+                    }
+                    animalAge = ageEditText.text.toString().toDouble()
+
+                    saveSchedule(it, cliente, selectedAnimal, data, hora, selectedSex, selectedSize, animalAge.toString())
+                    navigateToHomeActivity()
                 }
             }
         }
+
+
     }
 
     private fun showDatePickerDialog() {
@@ -136,17 +158,21 @@ class Scheduling : AppCompatActivity() {
         cliente: String,
         option: String,
         data: String,
-        hora: String
+        hora: String,
+        selectedSex: String,
+        selectedSize: String,
+        animalAge: String
     ) {
-        // Aqui a val name pega o nome do usuário digitado na tela de login, alterar para um possível email!
-        val name = intent.getStringExtra("name") ?: ""
-        //
+        // Aqui a val cliente já contém o nome do cliente recuperado da intent
         val db = FirebaseFirestore.getInstance()
         val userData = hashMapOf(
-            "cliente" to name,
+            "cliente" to cliente,
             "option" to option,
             "data" to data,
-            "hora" to hora
+            "hora" to hora,
+            "sexo" to selectedSex,
+            "porte" to selectedSize,
+            "idade" to animalAge
         )
 
         // userID = para fins de autenticação no firebase!
@@ -158,7 +184,7 @@ class Scheduling : AppCompatActivity() {
                     message(view, "Agendamento realizado com sucesso!", "#008000")
                     Handler().postDelayed({
                         navigateToHomeActivity()
-                    }, 4000) // Delay de 2 segundos
+                    }, 4000) // Delay de 4 segundos
                 }
                 .addOnFailureListener {
                     message(view, "Erro no servidor.", "#FF0000")
@@ -168,4 +194,5 @@ class Scheduling : AppCompatActivity() {
             message(view, "Erro na autenticação.", "#FF0000")
         }
     }
+
 }

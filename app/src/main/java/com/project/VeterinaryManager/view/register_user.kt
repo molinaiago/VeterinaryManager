@@ -41,8 +41,7 @@ class register_user : AppCompatActivity() {
             val bairro = bairroEditText.text.toString().trim()
 
             if (validateFields()) {
-                saveUser(it,name,email,password,cpf,street,number,bairro)
-                navigateToMainActivity()
+                checkIfEmailExists(name, email, password, cpf, street, number, bairro)
             }
         }
     }
@@ -54,56 +53,56 @@ class register_user : AppCompatActivity() {
         val nameEditText = findViewById<TextInputEditText>(R.id.editRegisterName)
         val name = nameEditText.text.toString().trim()
         if (name.isEmpty()) {
-                message(nameEditText,"Digite o seu nome!","#FF0000")
-                return false;
-            }
+            message(nameEditText,"Digite o seu nome!","#FF0000")
+            return false;
+        }
 
         //Email
         val emailEditText = findViewById<TextInputEditText>(R.id.editEmailRegister)
         val email = emailEditText.text.toString()
-            if (email.isEmpty()) {
-                message(emailEditText, "Digite o seu e-mail!", "#FF0000")
-                return false // Retorna false para indicar que a validação falhou
-            }
+        if (email.isEmpty()) {
+            message(emailEditText, "Digite o seu e-mail!", "#FF0000")
+            return false // Retorna false para indicar que a validação falhou
+        }
 
-            val atIndex = email.lastIndexOf("@")
-            if (atIndex != -1 && atIndex < email.length - 1) {
-                val domain = email.substring(atIndex + 1)
-                if (domain != domain.toLowerCase()) {
-                    message(
-                        emailEditText,
-                        "Depois de > @ < do e-mail deve ser minúsculo!",
-                        "#FF0000"
-                    )
-                    return false
-                }
-            } else {
-                // Caso não tenha o "@" ou esteja no final, o e-mail é inválido
-                message(emailEditText, "Digite um e-mail válido", "#FF0000")
+        val atIndex = email.lastIndexOf("@")
+        if (atIndex != -1 && atIndex < email.length - 1) {
+            val domain = email.substring(atIndex + 1)
+            if (domain != domain.toLowerCase()) {
+                message(
+                    emailEditText,
+                    "Depois de > @ < do e-mail deve ser minúsculo!",
+                    "#FF0000"
+                )
                 return false
             }
+        } else {
+            // Caso não tenha o "@" ou esteja no final, o e-mail é inválido
+            message(emailEditText, "Digite um e-mail válido", "#FF0000")
+            return false
+        }
 
 
         //Senha
         val passwordEditText = findViewById<TextInputEditText>(R.id.editPasswordRegister)
         val password = passwordEditText.text.toString()
 
-            if(password.length < 8) {
-                message(passwordEditText, "A senha deve conter no mínimo 8 caracteres", "#FF0000")
-                return false
-            }
-            if(password.isEmpty()) {
-                message(passwordEditText,"Digite uma senha!","#FF0000")
-            }
+        if(password.length < 8) {
+            message(passwordEditText, "A senha deve conter no mínimo 8 caracteres", "#FF0000")
+            return false
+        }
+        if(password.isEmpty()) {
+            message(passwordEditText,"Digite uma senha!","#FF0000")
+        }
 
         // CPF
         val cpfEditText = findViewById<TextInputEditText>(R.id.editCPF)
         val cpf = cpfEditText.text.toString()
 
-            if (cpf.length != 11) {
-                message(cpfEditText, "CPF inválido: deve conter 11 dígitos", "#FF0000")
-                return false // Retorna false para indicar que a validação falhou
-            }
+        if (cpf.length != 11) {
+            message(cpfEditText, "CPF inválido: deve conter 11 dígitos", "#FF0000")
+            return false // Retorna false para indicar que a validação falhou
+        }
 
         //Localização
         val editLocationStreet = findViewById<TextInputEditText>(R.id.editLocationStreet)
@@ -144,40 +143,64 @@ class register_user : AppCompatActivity() {
         }, 2000)
     }
 
-
-    //Mensagens pop-up
-    private fun message(view: View, message: String, cor: String) {
-        val snackbar = Snackbar.make(view,message, Snackbar.LENGTH_SHORT)
-        snackbar.setBackgroundTint(Color.parseColor(cor))
-        snackbar.setTextColor(Color.parseColor("#FFFFFF"))
-        snackbar.show()
-    }
-
-    private fun saveUser(view: View, nome: String, email: String, senha: String, cpf: String, rua: String, numero: String, bairro: String) {
-
+    private fun checkIfEmailExists(name: String, email: String, password: String, cpf: String, street: String, number: String, bairro: String) {
         val db = FirebaseFirestore.getInstance()
-        val userData = hashMapOf(
-            "nome" to nome,
-            "email" to email,
-            "senha" to senha,
-            "cpf" to cpf,
-            "rua" to rua,
-            "numero" to numero,
-            "bairro" to bairro
-        )
+        val registerButton = findViewById<Button>(R.id.registerButton)
 
-        val uID = "Iago"
+        db.collection("users")
+            .whereEqualTo("email", email)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (documents.isEmpty()) {
+                    // Email não existe no banco, pode salvar o usuário
+                    saveUser(registerButton, name, email, password, cpf, street, number, bairro)
+                    navigateToMainActivity()
+                } else {
+                    // Email já existe no banco, mostrar mensagem
+                    val emailEditText = findViewById<TextInputEditText>(R.id.editEmailRegister)
+                    message(emailEditText, "Email já cadastrado!", "#FF0000")
+                }
+            }
+            .addOnFailureListener { exception ->
+                // Tratar erro de consulta ao banco
+                val emailEditText = findViewById<TextInputEditText>(R.id.editEmailRegister)
+                message(emailEditText, "Erro ao verificar email.", "#FF0000")
+            }
+    }
+}
 
-        if (uID != null) {
-            db.collection("users").document(uID).set(userData)
-                .addOnSuccessListener {
-                }
-                .addOnFailureListener {
-                    message(view, "Erro no servidor.", "#FF0000")
-                }
-        } else {
-            // Não foi possível obter o UID do usuário autenticado
-            message(view, "Erro na autenticação.", "#FF0000")
-        }
+//Mensagens pop-up
+private fun message(view: View, message: String, cor: String) {
+    val snackbar = Snackbar.make(view,message, Snackbar.LENGTH_SHORT)
+    snackbar.setBackgroundTint(Color.parseColor(cor))
+    snackbar.setTextColor(Color.parseColor("#FFFFFF"))
+    snackbar.show()
+}
+
+private fun saveUser(view: View, nome: String, email: String, senha: String, cpf: String, rua: String, numero: String, bairro: String) {
+
+    val db = FirebaseFirestore.getInstance()
+    val userData = hashMapOf(
+        "nome" to nome,
+        "email" to email,
+        "senha" to senha,
+        "cpf" to cpf,
+        "rua" to rua,
+        "numero" to numero,
+        "bairro" to bairro
+    )
+
+    val uID = "Jose"
+
+    if (uID != null) {
+        db.collection("users").document(uID).set(userData)
+            .addOnSuccessListener {
+            }
+            .addOnFailureListener {
+                message(view, "Erro no servidor.", "#FF0000")
+            }
+    } else {
+        // Não foi possível obter o UID do usuário autenticado
+        message(view, "Erro na autenticação.", "#FF0000")
     }
 }

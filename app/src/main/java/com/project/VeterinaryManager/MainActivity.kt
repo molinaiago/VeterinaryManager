@@ -34,12 +34,12 @@ class MainActivity : AppCompatActivity() {
                 email.isEmpty() -> {
                     message(it,"Coloque o seu nome!")
                 } password.isEmpty() -> {
-                    message(it,"Preencha a senha!")
-                } password.length <= 5 -> {
-                    message(it,"A senha precisa ter no mínimo 6 caracteres!")
-                }else -> {
-                    goToHome(email)
-                }
+                message(it,"Preencha a senha!")
+            } password.length <= 5 -> {
+                message(it,"A senha precisa ter no mínimo 6 caracteres!")
+            }else -> {
+                goToHome(email)
+            }
             }
         }
 
@@ -75,5 +75,3 @@ class MainActivity : AppCompatActivity() {
         },3000)
     }
 }
-
-
