@@ -21,24 +21,24 @@ class home : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
-        val name = intent.extras?.getString("name")
+        val nome = intent.extras?.getString("nome")
 
         binding.mySchedulings.setOnClickListener {
-            fetchUserAgendas(name ?: "")
+            fetchUserAgendas(nome ?: "")
         }
 
         binding.scheduleButton.setOnClickListener {
             val intent = Intent(this, Scheduling::class.java)
-            intent.putExtra("name", name)
+            intent.putExtra("nome", nome)
             startActivity(intent)
         }
     }
 
-    private fun fetchUserAgendas(name: String) {
+    private fun fetchUserAgendas(nome: String) {
         val db = FirebaseFirestore.getInstance()
 
         db.collection("agendamentos")
-            .whereEqualTo("cliente", name)
+            .whereEqualTo("nome", nome)
             .get()
             .addOnSuccessListener { documents ->
                 val agendas = mutableListOf<String>()
@@ -48,7 +48,7 @@ class home : AppCompatActivity() {
                     val data = document.getString("data")
                     val hora = document.getString("hora")
 
-                    agendas.add("Animal: $option\n Data: $data\n Hora: $hora\n--------------------------------------")
+                    agendas.add("Animal: $option\nData: $data\nHora: $hora\n--------------------------------------")
                 }
                 showMyAgendasPopup(agendas)
             }
@@ -56,6 +56,7 @@ class home : AppCompatActivity() {
                 Toast.makeText(this, "Erro ao buscar as agendas.", Toast.LENGTH_SHORT).show()
             }
     }
+
 
 
     private fun showMyAgendasPopup(agendas: List<String>) {

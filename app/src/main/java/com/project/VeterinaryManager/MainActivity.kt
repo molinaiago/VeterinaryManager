@@ -58,9 +58,9 @@ class MainActivity : AppCompatActivity() {
         snackbar.setTextColor(Color.parseColor("#FFFFFF"))
         snackbar.show()
     }
-    private fun goToHome(name: String) {
+    private fun goToHome(nome: String) {
         val intent = Intent(this, home::class.java)
-        intent.putExtra("name",name)
+        intent.putExtra("nome",nome)
         startActivity(intent)
     }
 

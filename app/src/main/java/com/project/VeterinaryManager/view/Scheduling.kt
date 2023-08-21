@@ -36,7 +36,7 @@ class Scheduling : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        val cliente = intent.extras?.getString("cliente").toString()
+        val nome = intent.extras?.getString("nome").toString()
 
 
         binding.datePickerButton.setOnClickListener {
@@ -97,7 +97,7 @@ class Scheduling : AppCompatActivity() {
                     }
                     animalAge = ageEditText.text.toString().toDouble()
 
-                    saveSchedule(it, cliente, selectedAnimal, data, hora, selectedSex, selectedSize, animalAge.toString())
+                    saveSchedule(it, nome, selectedAnimal, data, hora, selectedSex, selectedSize, animalAge.toString())
                     navigateToHomeActivity()
                 }
             }
@@ -155,7 +155,7 @@ class Scheduling : AppCompatActivity() {
 
     private fun saveSchedule(
         view: View,
-        cliente: String,
+        nome: String,
         option: String,
         data: String,
         hora: String,
@@ -163,10 +163,10 @@ class Scheduling : AppCompatActivity() {
         selectedSize: String,
         animalAge: String
     ) {
-        // Aqui a val cliente já contém o nome do cliente recuperado da intent
+
         val db = FirebaseFirestore.getInstance()
         val userData = hashMapOf(
-            "cliente" to cliente,
+            "nome" to nome,
             "option" to option,
             "data" to data,
             "hora" to hora,

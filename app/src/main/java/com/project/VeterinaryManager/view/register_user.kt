@@ -33,7 +33,7 @@ class register_user : AppCompatActivity() {
             val bairroEditText = findViewById<TextInputEditText>(R.id.editLocationBairro)
             val emailEditText = findViewById<TextInputEditText>(R.id.editEmailRegister)
             val email = emailEditText.text.toString()
-            val name = nameEditText.text.toString().trim()
+            val nome = nameEditText.text.toString().trim()
             val password = passwordEditText.text.toString()
             val cpf = cpfEditText.text.toString().trim()
             val street = streetEditText.text.toString().trim()
@@ -41,7 +41,7 @@ class register_user : AppCompatActivity() {
             val bairro = bairroEditText.text.toString().trim()
 
             if (validateFields()) {
-                checkIfEmailExists(name, email, password, cpf, street, number, bairro)
+                checkIfEmailExists(nome, email, password, cpf, street, number, bairro)
             }
         }
     }
@@ -51,8 +51,8 @@ class register_user : AppCompatActivity() {
 
         //Nome
         val nameEditText = findViewById<TextInputEditText>(R.id.editRegisterName)
-        val name = nameEditText.text.toString().trim()
-        if (name.isEmpty()) {
+        val nome = nameEditText.text.toString().trim()
+        if (nome.isEmpty()) {
             message(nameEditText,"Digite o seu nome!","#FF0000")
             return false;
         }
@@ -143,7 +143,7 @@ class register_user : AppCompatActivity() {
         }, 2000)
     }
 
-    private fun checkIfEmailExists(name: String, email: String, password: String, cpf: String, street: String, number: String, bairro: String) {
+    private fun checkIfEmailExists(nome: String, email: String, password: String, cpf: String, street: String, number: String, bairro: String) {
         val db = FirebaseFirestore.getInstance()
         val registerButton = findViewById<Button>(R.id.registerButton)
 
@@ -153,7 +153,7 @@ class register_user : AppCompatActivity() {
             .addOnSuccessListener { documents ->
                 if (documents.isEmpty()) {
                     // Email não existe no banco, pode salvar o usuário
-                    saveUser(registerButton, name, email, password, cpf, street, number, bairro)
+                    saveUser(registerButton, nome, email, password, cpf, street, number, bairro)
                     navigateToMainActivity()
                 } else {
                     // Email já existe no banco, mostrar mensagem
