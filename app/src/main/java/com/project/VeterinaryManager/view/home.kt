@@ -32,6 +32,25 @@ class home : AppCompatActivity() {
             intent.putExtra("nome", nome)
             startActivity(intent)
         }
+
+        binding.infoButton.setOnClickListener {
+
+            val dialogView = layoutInflater.inflate(R.layout.dialog_layout, null)
+
+            val dialogBuilder = AlertDialog.Builder(this)
+                .setView(dialogView)
+
+            val alertDialog = dialogBuilder.create()
+
+            val dialogButton = dialogView.findViewById<Button>(R.id.dialogButton)
+            dialogButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+            alertDialog.show()
+        }
+
+
+
     }
 
     private fun fetchUserAgendas(nome: String) {
