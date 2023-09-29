@@ -99,10 +99,13 @@ class register_user : AppCompatActivity() {
         val cpfEditText = findViewById<TextInputEditText>(R.id.editCPF)
         val cpf = cpfEditText.text.toString()
 
-        if (cpf.length != 11) {
-            message(cpfEditText, "CPF inválido: deve conter 11 dígitos", "#FF0000")
+        if (isCPFValid(cpf)) {
+            // CPF válido
+        } else {
+            message(cpfEditText, "CPF inválido: deve conter 11 dígitos e ser válido", "#FF0000")
             return false // Retorna false para indicar que a validação falhou
         }
+
 
         //Localização
         val editLocationStreet = findViewById<TextInputEditText>(R.id.editLocationStreet)
@@ -168,6 +171,40 @@ class register_user : AppCompatActivity() {
             }
     }
 }
+
+fun isCPFValid(cpf: String): Boolean {
+    // Remove caracteres não numéricos do CPF
+    val cleanedCPF = cpf.replace("[^0-9]".toRegex(), "")
+
+    // Verifica se o CPF tem 11 dígitos após a limpeza
+    if (cleanedCPF.length != 11) {
+        return false
+    }
+
+    // Calcula o primeiro dígito verificador
+    val firstDigit = calculateDigit(cleanedCPF.substring(0, 9))
+
+    // Calcula o segundo dígito verificador
+    val secondDigit = calculateDigit(cleanedCPF.substring(0, 9) + firstDigit)
+
+    // Verifica se os dígitos verificadores são iguais aos dígitos originais
+    return cleanedCPF.substring(9, 11) == "$firstDigit$secondDigit"
+}
+
+fun calculateDigit(cpfPart: String): Int {
+    var sum = 0
+    var weight = cpfPart.length + 1
+
+    for (digit in cpfPart) {
+        sum += digit.toString().toInt() * weight
+        weight--
+    }
+
+    val remainder = sum % 11
+
+    return if (remainder < 2) 0 else 11 - remainder
+}
+
 
 //Mensagens pop-up
 private fun message(view: View, message: String, cor: String) {
