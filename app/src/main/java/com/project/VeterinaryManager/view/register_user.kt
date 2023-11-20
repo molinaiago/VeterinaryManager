@@ -227,7 +227,7 @@ private fun saveUser(view: View, nome: String, email: String, senha: String, cpf
         "bairro" to bairro
     )
 
-    val uID = "Jose"
+    val uID = "Users"
 
     if (uID != null) {
         db.collection("users").document(uID).set(userData)

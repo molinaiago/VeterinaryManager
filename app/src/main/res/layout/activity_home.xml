@@ -7,183 +7,95 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/denim"
-    tools:context=".view.home"
-    android:orientation="vertical"
-    android:gravity="center"
-    >
-
-    <View
-        android:id="@+id/containerTop"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/background_view_top"
-        android:layout_marginTop="-40dp"
-        />
-
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="-220dp"
-        android:src="@drawable/logoappinside" />
-
-    <TextView
-        android:id="@+id/userName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bem-vindo, Iago"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
+        android:background="@color/denim"
+        tools:context=".view.home"
+        android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginTop="-15dp"
-        />
+        >
 
-    <TextView
-        android:id="@+id/allServices"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SOLICITAÇÃO DE CASTRAÇÃO:"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        />
-
-    <TextView
-        android:id="@+id/firstInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cães e Gatos"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:background="@drawable/background_edittext_home"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:padding="10dp"
-        />
-
-    <TextView
-        android:id="@+id/secondInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="De qualquer sexo"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:background="@drawable/background_edittext_home"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:padding="10dp"
-        android:layout_marginTop="9dp"
-        />
-    <TextView
-        android:id="@+id/thirdInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sem raça definida"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:background="@drawable/background_edittext_home"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:padding="10dp"
-        android:layout_marginTop="9dp"
-        />
-    <TextView
-        android:id="@+id/fourthInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Qualquer idade"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:background="@drawable/background_edittext_home"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:padding="10dp"
-        android:layout_marginTop="9dp"
-        />
-    <TextView
-        android:id="@+id/fithInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Residentes de Santiago/RS"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:background="@drawable/background_edittext_home"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:padding="10dp"
-        android:layout_marginTop="9dp"
-        />
+        <View
+            android:id="@+id/containerTop"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="-150dp"
+            android:background="@drawable/background_view_top" />
 
 
-    <Button
-        android:id="@+id/infoButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="INFORMAÇÕES"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:backgroundTint="@color/midnightblue"
-        android:padding="15dp"
-        android:textColor="@color/white"
-        android:drawableEnd="@drawable/baseline_info_24"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="16dp"
-        android:layout_gravity="center"
-        android:onClick="openDialog"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        />
+        <ImageView
+            android:layout_width="347dp"
+            android:layout_height="305dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-380dp"
+            android:src="@drawable/logoappinside" />
 
-    <Button
-        android:id="@+id/mySchedulings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="MINHA AGENDA"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:backgroundTint="@color/midnightblue"
-        android:padding="15dp"
-        android:drawableEnd="@drawable/baseline_view_agenda_24"
-        android:layout_marginTop="-20dp"
-        android:layout_gravity="center"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        />
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_marginTop="-15dp"
+            android:gravity="center"
+            android:text="Bem-vindo, Iago"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/scheduleButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="AGENDAR CASTRAÇÃO"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:backgroundTint="@color/midnightblue"
-        android:padding="15dp"
-        android:drawableEnd="@drawable/baseline_check_24"
-        android:layout_marginTop="-5dp"
-        android:layout_gravity="center"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        />
+        <Button
+            android:id="@+id/infoButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="INFORMAÇÕES"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/midnightblue"
+            android:padding="15dp"
+            android:textColor="@color/white"
+            android:drawableEnd="@drawable/baseline_info_24"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center"
+            android:onClick="openDialog"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/mySchedulings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MINHA AGENDA"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/midnightblue"
+            android:padding="15dp"
+            android:drawableEnd="@drawable/baseline_view_agenda_24"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <Button
+            android:id="@+id/scheduleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/midnightblue"
+            android:drawableEnd="@drawable/baseline_check_24"
+            android:padding="15dp"
+            android:text="AGENDAR CASTRAÇÃO"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 </ScrollView>
