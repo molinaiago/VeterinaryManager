@@ -109,6 +109,7 @@
 
         <CheckBox
             android:id="@+id/optDog"
+            style="@style/CheckboxStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
@@ -125,6 +126,7 @@
 
         <CheckBox
             android:id="@+id/optCat"
+            style="@style/CheckboxStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
@@ -298,55 +300,6 @@
             />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="LEMBRETES:"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
-        android:layout_gravity="center"
-        android:padding="5dp"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="- Lembre-se, ao agendar, você concorda com os termos das taxas dos exames, o pagamento é na Instituição;"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_gravity="center"
-        android:padding="5dp"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="- O uso de uma caixa de transporte é importante;"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:padding="5dp"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="- Verifique novamente a data e hora escolhida;"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:padding="5dp"
-        />
-
     <Button
         android:id="@+id/schedulingButton"
         android:layout_width="wrap_content"
@@ -371,3 +324,5 @@
 </LinearLayout>
 
 </ScrollView>
+
+//chat personaliza as checkbox deixe mais apresentaveis

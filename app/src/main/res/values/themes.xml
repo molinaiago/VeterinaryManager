@@ -5,5 +5,9 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+    <style name="CheckboxStyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:buttonTint">@color/midnightblue</item>
+    </style>
+
     <style name="Theme.VeterinaryManager" parent="Base.Theme.VeterinaryManager" />
 </resources>
