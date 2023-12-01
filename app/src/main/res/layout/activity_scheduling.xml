@@ -314,7 +314,7 @@
         android:textSize="18sp"
         android:padding="15dp"
         app:cornerRadius="15dp"
-        android:backgroundTint="@color/green"
+        android:backgroundTint="@color/midnightblue"
         android:layout_marginTop="30dp"
         android:layout_marginStart="100dp"
         android:layout_marginEnd="100dp"
@@ -325,4 +325,3 @@
 
 </ScrollView>
 
-//chat personaliza as checkbox deixe mais apresentaveis
